@@ -1,4 +1,4 @@
-# xhr.js - General purpose HTTP / HTTPS client for node.js. Supports transparent gzip / deflate decoding.
+# xhr.js - 前端 XMLHttpRequest 请求
 
 <p>
   <a href="https://hai2007.gitee.io/npm-downloads?interval=7&packages=@hai2007/xhr"><img src="https://img.shields.io/npm/dm/@hai2007/xhr.svg" alt="downloads"></a>
