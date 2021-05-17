@@ -12,6 +12,19 @@
 ## Issues
 使用的时候遇到任何问题或有好的建议，请点击进入[issue](https://github.com/hai2007/xhr.js/issues)，欢迎参与维护！
 
+## How to use?
+首先你需要通过命令行安装：
+
+```bash
+npm install --save @hai2007/xhr
+```
+
+安装好了以后，然后引入后就可以使用了：
+
+```
+import xhr from '@hai2007/xhr';
+```
+
 开源协议
 ---------------------------------------
 [MIT](https://github.com/hai2007/xhr.js/blob/master/LICENSE)

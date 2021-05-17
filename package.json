@@ -1,6 +1,6 @@
 {
   "name": "@hai2007/xhr",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0",
   "description": "General purpose HTTP / HTTPS client for node.js. Supports transparent gzip / deflate decoding.",
   "main": "./dist/xhr.min.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "npm run rollup && npm run uglifyjs && hai2007_nodejs --config ./hai2007_nodejs.config.js",
     "rollup": "rollup --config rollup.config.js",
     "uglifyjs": "uglifyjs ./dist/xhr.js -m -o ./dist/xhr.min.js",
-    "server": "node ./http-server/index.js"
+    "server": "node ./http-server/index.js",
+    "debug": "echo 'chrome://inspect/#devices' && node  --inspect ./http-server/index.js"
   },
   "repository": {
     "type": "git",

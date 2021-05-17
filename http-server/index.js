@@ -41,13 +41,13 @@ require('http').createServer(function (request, response) {
         // else{
 
         // 请求的文件路径
-        let filePath = fullPath(options.url == "/" ? "index.html" : "./"+options.url, basePath);
+        let filePath = fullPath(options.url == "/" ? "index.html" : "./" + options.url, basePath);
 
         // 文件后缀名称
         let dotName = /\./.test(filePath) ? filePath.match(/\.([^.]+)$/)[1] : "";
 
         // 文件类型
-        if (dotName != "") contentType = mimeTypes[dotName];
+        if (dotName != "") result.type = mimeTypes[dotName];
 
         // 如果需要读取的文件存在
         if (fs.existsSync(filePath) && !fs.lstatSync(filePath).isDirectory()) {
