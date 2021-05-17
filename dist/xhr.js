@@ -9,10 +9,90 @@
  * Copyright (c) 2021-present hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Mon May 17 2021 17:44:24 GMT+0800 (GMT+08:00)
+ * Date:Mon May 17 2021 19:37:35 GMT+0800 (GMT+08:00)
  */
 (function () {
     'use strict';
+
+    var toString = Object.prototype.toString;
+
+    /**
+     * 获取一个值的类型字符串[object type]
+     *
+     * @param {*} value 需要返回类型的值
+     * @returns {string} 返回类型字符串
+     */
+    function getType (value) {
+        if (value == null) {
+            return value === undefined ? '[object Undefined]' : '[object Null]';
+        }
+        return toString.call(value);
+    }
+
+    /**
+     * 判断一个值是不是String。
+     *
+     * @param {*} value 需要判断类型的值
+     * @returns {boolean} 如果是String返回true，否则返回false
+     */
+    function _isString (value) {
+        var type = typeof value;
+        return type === 'string' || (type === 'object' && value != null && !Array.isArray(value) && getType(value) === '[object String]');
+    }
+
+    /**
+     * 判断一个值是不是一个朴素的'对象'
+     * 所谓"纯粹的对象"，就是该对象是通过"{}"或"new Object"创建的
+     *
+     * @param {*} value 需要判断类型的值
+     * @returns {boolean} 如果是朴素的'对象'返回true，否则返回false
+     */
+
+    function _isPlainObject (value) {
+        if (value === null || typeof value !== 'object' || getType(value) != '[object Object]') {
+            return false;
+        }
+
+        // 如果原型为null
+        if (Object.getPrototypeOf(value) === null) {
+            return true;
+        }
+
+        var proto = value;
+        while (Object.getPrototypeOf(proto) !== null) {
+            proto = Object.getPrototypeOf(proto);
+        }
+        return Object.getPrototypeOf(value) === proto;
+    }
+
+    // 基本类型
+    var isUndefined = function (input) { return input === undefined };
+    var isString = _isString;
+    var isPlainObject = _isPlainObject;
+
+    function toString$1 (data) {
+
+        // 如果是字符串
+        if (isString(data)) {
+            return data;
+        }
+
+        // 如果是JSON数据
+        else if (isPlainObject(data)) {
+            return JSON.stringify(data);
+        }
+
+        // 如果为空
+        else if (isUndefined(data)) {
+            return "";
+        }
+
+        // 否则
+        else {
+            return data;
+        }
+
+    }
 
     var xhr = function (settings, callback, errorback) {
 
@@ -28,7 +108,7 @@
                     status: xmlhttp.status,
 
                     // 数据
-                    data:xmlhttp.responseText
+                    data: xmlhttp.responseText
 
                 });
 
@@ -42,7 +122,7 @@
             xmlhttp.setRequestHeader(key, settings.header);
         }
 
-        xmlhttp.send(settings.data);
+        xmlhttp.send(toString$1(settings.data));
 
     };
 

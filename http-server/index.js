@@ -33,39 +33,41 @@ require('http').createServer(function (request, response) {
 
     try {
 
-        // if(){
+        if (/^upload\.do/.test(options.url)) {
 
-        // }
+            console.log(options.url);
+
+        }
 
         // 默认就作为普通的数据服务器
-        // else{
-
-        // 请求的文件路径
-        let filePath = fullPath(options.url == "/" ? "index.html" : "./" + options.url, basePath);
-
-        // 文件后缀名称
-        let dotName = /\./.test(filePath) ? filePath.match(/\.([^.]+)$/)[1] : "";
-
-        // 文件类型
-        if (dotName != "") result.type = mimeTypes[dotName];
-
-        // 如果需要读取的文件存在
-        if (fs.existsSync(filePath) && !fs.lstatSync(filePath).isDirectory()) {
-            result.data = fs.readFileSync(filePath);
-        }
-
-        // 如果不存在，就返回404并列举出当前目录内容
         else {
 
-            result = {
-                type: "text/html",
-                code: 404,
-                data: require('./template404')(responseFileList(filePath))
-            };
+            // 请求的文件路径
+            let filePath = fullPath(options.url == "/" ? "index.html" : "./" + options.url, basePath);
+
+            // 文件后缀名称
+            let dotName = /\./.test(filePath) ? filePath.match(/\.([^.]+)$/)[1] : "";
+
+            // 文件类型
+            if (dotName != "") result.type = mimeTypes[dotName];
+
+            // 如果需要读取的文件存在
+            if (fs.existsSync(filePath) && !fs.lstatSync(filePath).isDirectory()) {
+                result.data = fs.readFileSync(filePath);
+            }
+
+            // 如果不存在，就返回404并列举出当前目录内容
+            else {
+
+                result = {
+                    type: "text/html",
+                    code: 404,
+                    data: require('./template404')(responseFileList(filePath))
+                };
+
+            }
 
         }
-
-        // }
 
     }
 
@@ -81,7 +83,10 @@ require('http').createServer(function (request, response) {
     response.writeHead(result.code, {
 
         // 响应内容类型
-        "Content-Type": result.type + ";charset=utf-8"
+        "Content-Type": result.type + ";charset=utf-8",
+
+        // 标记服务器名称
+        "X-Powered-By": "http-server for @hai2007/xhr"
 
     });
 

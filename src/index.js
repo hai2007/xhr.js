@@ -1,3 +1,5 @@
+import toString from './tool/toString';
+
 var xhr = function (settings, callback, errorback) {
 
     var xmlhttp = new XMLHttpRequest();
@@ -12,7 +14,7 @@ var xhr = function (settings, callback, errorback) {
                 status: xmlhttp.status,
 
                 // 数据
-                data:xmlhttp.responseText
+                data: xmlhttp.responseText
 
             });
 
@@ -26,7 +28,7 @@ var xhr = function (settings, callback, errorback) {
         xmlhttp.setRequestHeader(key, settings.header);
     }
 
-    xmlhttp.send(settings.data);
+    xmlhttp.send(toString(settings.data));
 
 };
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件上传 - General purpose HTTP / HTTPS client for node.js. Supports transparent gzip / deflate decoding.
+    </title>
+    <script src="../dist/xhr.js"></script>
+</head>
+
+<body>
+
+    <progress id="progressBar" value="0" max="100" style="width: 300px;"></progress>
+    <hr />
+    <input type="file" id="file" name="myfile" />
+    <input type="button" onclick="UpladFile()" value="上传" />
+
+    <script>
+
+        function UpladFile() {
+
+            var fileObj = document.getElementById("file").files[0]; // js 获取文件对象
+            var form = new FormData(); // FormData 对象
+            form.append("mf", fileObj); // 文件对象
+
+            xhr({
+                method: "POST",
+                url: "/upload.do",
+                data: form
+            }, function (data) {
+                // debugger
+                console.log(data);
+            }, function (error) {
+                // debugger
+                console.log(error);
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

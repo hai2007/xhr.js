@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xhr.js - General purpose HTTP / HTTPS client for node.js. Supports transparent gzip / deflate decoding.
+    <title>常规测试 - General purpose HTTP / HTTPS client for node.js. Supports transparent gzip / deflate decoding.
     </title>
     <script src="../dist/xhr.js"></script>
 </head>
@@ -14,19 +14,19 @@
 
     <script>
 
-        // debugger
-
         xhr({
             method: "POST",
-            url: "./LICENSE",
-            data:{
-                key1:"value1",
-                key2:"value2"
-            }
+            url: "../package.json",
+            // data:{
+            //     key1:"value1",
+            //     key2:"value2"
+            // }
         }, function (data) {
-            debugger
+            // debugger
+            console.log(data);
         }, function (error) {
-            debugger
+            // debugger
+            console.log(error);
         });
 
     </script>
