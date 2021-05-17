@@ -1,15 +1,36 @@
+var xhr = function (settings, callback, errorback) {
 
-// 导入实际干事的方法
-import get from './methods/get';
-import post from './methods/post';
+    var xmlhttp = new XMLHttpRequest();
 
-let xhr = function (settings) {
+    xmlhttp.onreadystatechange = function () {
+
+        if (xmlhttp.readyState == 4) {
+
+            callback({
+
+                // 状态码
+                status: xmlhttp.status,
+
+                // 数据
+                data:xmlhttp.responseText
+
+            });
+
+        }
+    };
+
+    xmlhttp.open(settings.method, settings.url, true);
+
+    // 设置请求头
+    for (var key in settings.header) {
+        xmlhttp.setRequestHeader(key, settings.header);
+    }
+
+    xmlhttp.send(settings.data);
 
 };
 
-// 挂载方法
-xhr.get = get;
-xhr.post = post;
+// 导出
 
 if (typeof module === "object" && typeof module.exports === "object") {
 

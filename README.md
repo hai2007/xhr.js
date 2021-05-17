@@ -21,8 +21,25 @@ npm install --save @hai2007/xhr
 
 安装好了以后，然后引入后就可以使用了：
 
-```
+```js
 import xhr from '@hai2007/xhr';
+
+xhr({
+
+    method:string,// 请求方法
+    url:string,// 请求地址
+    data:any,// 请求数据
+    header:json,// 请求头
+
+},function(data){
+
+    // 成功回调
+
+}, function(error){
+
+    // 错误回调
+
+});
 ```
 
 开源协议
