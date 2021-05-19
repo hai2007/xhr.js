@@ -25,7 +25,7 @@ var xhr = function (settings, callback, errorback) {
 
     // 设置请求头
     for (var key in settings.header) {
-        xmlhttp.setRequestHeader(key, settings.header);
+        xmlhttp.setRequestHeader(key, settings.header[key]);
     }
 
     xmlhttp.send(toString(settings.data));

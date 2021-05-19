@@ -28,7 +28,10 @@
             xhr({
                 method: "POST",
                 url: "/upload.do",
-                data: form
+                data: form,
+                header: {
+                    "Content-Type": "multipart/form-data"
+                }
             }, function (data) {
                 // debugger
                 console.log(data);

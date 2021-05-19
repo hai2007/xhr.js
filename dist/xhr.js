@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 0.1.0
+ * version 0.1.1
  *
  * Copyright (c) 2021-present hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Mon May 17 2021 19:37:35 GMT+0800 (GMT+08:00)
+ * Date:Wed May 19 2021 09:27:25 GMT+0800 (GMT+08:00)
  */
 (function () {
     'use strict';
@@ -119,7 +119,7 @@
 
         // 设置请求头
         for (var key in settings.header) {
-            xmlhttp.setRequestHeader(key, settings.header);
+            xmlhttp.setRequestHeader(key, settings.header[key]);
         }
 
         xmlhttp.send(toString$1(settings.data));
