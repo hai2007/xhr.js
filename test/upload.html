@@ -29,8 +29,18 @@
                 method: "POST",
                 url: "/upload.do",
                 data: form,
+                timeout: 60000,
                 header: {
                     "Content-Type": "multipart/form-data"
+                },
+                xhr: function () {
+                    xmlhttp = new XMLHttpRequest();
+
+                    xmlhttp.upload.onprogress = function (data) {
+                        console.log(data);
+                    };
+
+                    return xmlhttp;
                 }
             }, function (data) {
                 // debugger

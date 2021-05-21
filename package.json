@@ -1,7 +1,7 @@
 {
   "name": "@hai2007/xhr",
-  "version": "0.1.1",
-  "description": "General purpose HTTP / HTTPS client for node.js. Supports transparent gzip / deflate decoding.",
+  "version": "0.1.2",
+  "description": "General purpose HTTP / HTTPS client. Supports transparent gzip / deflate decoding.",
   "main": "./dist/xhr.min.js",
   "scripts": {
     "start": "npm install && npm run build",

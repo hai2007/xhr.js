@@ -28,8 +28,10 @@ xhr({
 
     method:string,// 请求方法
     url:string,// 请求地址
-    data:any,// 请求数据
-    header:json,// 请求头
+    data:any,// 请求数据，可选
+    header:json,// 请求头，可选
+    timeout:6000,// 请求超时时间，可选
+    xhr:function,// 自定义xhr对象，可选
 
 },function(data){
 

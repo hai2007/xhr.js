@@ -43,8 +43,6 @@ require('http').createServer(function (request, response) {
                 console.log(data);
                 error('===================================文件上传结束');
 
-
-
             }
 
             // 默认就作为普通的数据服务器
@@ -94,7 +92,7 @@ require('http').createServer(function (request, response) {
             "Content-Type": result.type + ";charset=utf-8",
 
             // 标记服务器名称
-            "X-Powered-By": "http-server for @hai2007/xhr"
+            "X-Powered-By": "HTTP Server"
 
         });
 
